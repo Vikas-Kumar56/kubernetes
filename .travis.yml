@@ -3,20 +3,8 @@ services:
   - docker
 
 before_install:
-  - docker build -t vikas-kumar56/react-test -f ./client/Dockerfile.dev ./client
-
-script:
-  - docker run vikas-kumar56/react-test npm run test -- --coverage
-
-after_success:
-  - docker build -t amolkumar56/multi-client:latest ./client
-  - docker build -t amolkumar56/multi-nginx ./nginx
-  - docker build -t amolkumar56/multi-server ./server
-  - docker build -t amolkumar56/multi-worker ./worker
-  # Log in to the docker CLI
-  - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images and push to docker hub
-  - docker push amolkumar56/multi-client:latest
-  - docker push amolkumar56/multi-nginx
-  - docker push amolkumar56/multi-server
-  - docker push amolkumar56/multi-worker
+  - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service_manager.json.enc -out service_manager.json -d
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file service-account.json

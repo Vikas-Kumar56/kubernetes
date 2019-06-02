@@ -4,6 +4,7 @@
 /client/node_modules
 /server/node_modules
 /worker/node_modules
+/service_manager.json
 
 
 
