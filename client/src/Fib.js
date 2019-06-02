@@ -59,7 +59,7 @@ class Fib extends React.Component {
   render() {
     return (
       <div>
-        <h1>Version 2</h1>
+        <h1>Update from CI/CD Works</h1>
         <form onSubmit={this.submitForm}>
           <label>Enter your index:</label>
           <input
